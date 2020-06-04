@@ -18,8 +18,8 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.strokeStyle = color;
   ctx.lineJoin = 'round';
   ctx.lineWidth = CORNER_RADIUS;
-  ctx.strokeRect(x + (CORNER_RADIUS / 2), y + (CORNER_RADIUS / 2), CLOUD_WIDTH - CORNER_RADIUS, CLOUD_HEIGHT - CORNER_RADIUS);
-  ctx.fillRect(x + (CORNER_RADIUS / 2), y + (CORNER_RADIUS / 2), CLOUD_WIDTH - CORNER_RADIUS, CLOUD_HEIGHT - CORNER_RADIUS);
+  ctx.strokeRect(x + CORNER_RADIUS / 2, y + CORNER_RADIUS / 2, CLOUD_WIDTH - CORNER_RADIUS, CLOUD_HEIGHT - CORNER_RADIUS);
+  ctx.fillRect(x + CORNER_RADIUS / 2, y + CORNER_RADIUS / 2, CLOUD_WIDTH - CORNER_RADIUS, CLOUD_HEIGHT - CORNER_RADIUS);
 };
 
 var getMaxElement = function (arr) {
@@ -47,9 +47,9 @@ var getRandomColor = function (max) {
 };
 
 var renderGraphs = function (ctx, players, times) {
+  var maxTime = getMaxElement(times);
+  var firstGap = (CLOUD_WIDTH - ((BAR_GAP + BAR_WIDTH) * players.length - BAR_WIDTH)) / 2;
   for (var i = 0; i < players.length; i++) {
-    var maxTime = getMaxElement(times);
-    var firstGap = (CLOUD_WIDTH - ((BAR_GAP + BAR_WIDTH) * players.length - BAR_WIDTH)) / 2;
     var barPositionX = CLOUD_X + firstGap + (BAR_GAP + BAR_WIDTH) * i;
     var textPositionX = barPositionX + BAR_WIDTH / 2;
     var barHeight = (MAX_BAR_HEIGHT * times[i]) / maxTime;
