@@ -3,6 +3,7 @@ var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'К
 var WIZARD_SURNAME = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var WIZARD_COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var MIN_NAME_LENGTH = 2;
 var MAX_NAME_LENGTH = 25;
 
@@ -86,6 +87,7 @@ setupOpen.addEventListener('keydown', function (evt) {
 
 setupClose.addEventListener('click', function () {
   closePopup();
+  document.removeEventListener('keydown', onPopupEscPress);
 });
 
 setupClose.addEventListener('keydown', function (evt) {
@@ -117,4 +119,30 @@ userNameInput.addEventListener('input', function () {
   } else {
     userNameInput.setCustomValidity('');
   }
+});
+
+// Задание 4.1 Обработка и покраска при клике
+
+var wizardCustomiseCoat = setup.querySelector('.wizard-coat');
+var wizardCustomiseEyes = setup.querySelector('.wizard-eyes');
+var wizardCustomiseFireball = setup.querySelector('.setup-fireball-wrap');
+var wizardCoatInput = setup.querySelector('input[name = "coat-color"]');
+var wizardEyesInput = setup.querySelector('input[name = "eyes-color"]');
+var wizardFireballInput = setup.querySelector('input[name = "fireball-color"]');
+
+var customiseFillColor = function (target, array, form) {
+  target.addEventListener('click', function () {
+    var color = array[getRandomSaturation(array.length)];
+    target.style.fill = color;
+    form.value = color;
+  });
+};
+
+customiseFillColor(wizardCustomiseCoat, WIZARD_COAT_COLORS, wizardCoatInput);
+customiseFillColor(wizardCustomiseEyes, WIZARD_EYES_COLORS, wizardEyesInput);
+
+wizardCustomiseFireball.addEventListener('click', function () {
+  var fireballColor = WIZARD_FIREBALL_COLORS[getRandomSaturation(WIZARD_FIREBALL_COLORS.length)];
+  wizardCustomiseFireball.style.backgroundColor = fireballColor;
+  wizardFireballInput.value = fireballColor;
 });
