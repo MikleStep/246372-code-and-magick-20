@@ -30,6 +30,7 @@ window.popup = (function (setup, setupOpen) {
     } else {
       document.removeEventListener('keydown', onPopupEscPress(input, modal));
       modal.classList.add('hidden');
+      setup.removeAttribute('style');
     }
   };
   setupOpen.addEventListener('click', function () {
@@ -54,4 +55,3 @@ window.popup = (function (setup, setupOpen) {
   });
 
 })(document.querySelector('.setup'), document.querySelector('.setup-open'));
-// })(document.querySelector('.setup-open'), document.querySelector('.setup-close'), document.querySelector('.setup-user-name'));
