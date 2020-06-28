@@ -1,4 +1,5 @@
 'use strict';
+
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAME = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var WIZARD_COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
@@ -151,3 +152,5 @@ var customiseFillColor = function (target, array, form, styleAttr) {
 customiseFillColor(wizardCustomiseCoat, WIZARD_COAT_COLORS, wizardCoatInput, 'fill');
 customiseFillColor(wizardCustomiseEyes, WIZARD_EYES_COLORS, wizardEyesInput, 'fill');
 customiseFillColor(wizardCustomiseFireball, WIZARD_FIREBALL_COLORS, wizardFireballInput, 'backgroundColor');
+
+window.wizard.render(4, document.querySelector('.setup-similar-list'));
