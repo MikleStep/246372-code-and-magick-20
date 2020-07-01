@@ -7,7 +7,6 @@ window.wizard = (function (setup, template) {
     fireballColors: ['#30a8ee', '#5ce6c0', '#e848d5', '#e6e848', '#ee4830']
   };
 
-
   var customiseCoat = setup.querySelector('.wizard-coat');
   var customiseEyes = setup.querySelector('.wizard-eyes');
   var customiseFireball = setup.querySelector('.setup-fireball-wrap');
@@ -78,6 +77,7 @@ window.wizard = (function (setup, template) {
     });
     evt.preventDefault();
   };
+
   form.addEventListener('submit', submitHandler);
 
 })(document.querySelector('.setup'), document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'));
