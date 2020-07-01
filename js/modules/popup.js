@@ -54,4 +54,5 @@ window.popup = (function (setup, setupOpen) {
     }
   });
 
+
 })(document.querySelector('.setup'), document.querySelector('.setup-open'));
