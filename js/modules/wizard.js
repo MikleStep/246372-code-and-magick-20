@@ -68,7 +68,7 @@ window.wizard = (function (setup) {
         eyesColor = color;
       }
 
-      updateWizards();
+      window.debounce(updateWizards);
     });
   };
 
