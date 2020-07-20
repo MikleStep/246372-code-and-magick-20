@@ -42,10 +42,10 @@ window.wizard = (function (setup) {
   };
 
   var updateWizards = function () {
-    window.wizardRender.render(wizards.sort(function (left, right) {
+    window.wizardRender.render(wizards.slice().sort(function (left, right) {
       var rankDiff = getRank(right) - getRank(left);
       if (rankDiff === 0) {
-        rankDiff = namesComparator(left.name, right.name);
+        rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
       }
       return rankDiff;
     }));
@@ -67,8 +67,7 @@ window.wizard = (function (setup) {
       if (target === customiseEyes) {
         eyesColor = color;
       }
-
-      window.debounce(updateWizards);
+      window.debounce.setTimeout(updateWizards)();
     });
   };
 
